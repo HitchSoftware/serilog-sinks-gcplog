@@ -1,4 +1,10 @@
-# Serilog.Sinks.GoogleCloudLogging
+# Serilog.Sinks.Gcp
+
+This project is a fork of [serilog-sinks-Gcp](https://github.com/manigandham/serilog-sinks-Gcp) originally created by [Manigandham](https://github.com/manigandham). The original project is licensed under the MIT License.
+
+## License
+This project continues to use the MIT License. The original license text can be found in the `LICENSE` file.
+
 
 Serilog sink that writes events to [Google Cloud Logging](https://cloud.google.com/logging/).
 
@@ -7,17 +13,17 @@ Serilog sink that writes events to [Google Cloud Logging](https://cloud.google.c
 
 ## Usage
 
-#### Install [package from Nuget](https://www.nuget.org/packages/Serilog.Sinks.GoogleCloudLogging/):
+#### Install [package from Nuget](https://www.nuget.org/packages/Serilog.Sinks.Gcp/):
 
 ```
-dotnet add package Serilog.Sinks.GoogleCloudLogging
+dotnet add package Serilog.Sinks.Gcp
 ```
 
 #### Configure in code:
 
 ```csharp
-var config = new GoogleCloudLoggingSinkOptions { ProjectId = "YOUR_PROJECT_ID" };
-Log.Logger = new LoggerConfiguration().WriteTo.GoogleCloudLogging(config).CreateLogger();
+var config = new GcpSinkOptions { ProjectId = "YOUR_PROJECT_ID" };
+Log.Logger = new LoggerConfiguration().WriteTo.Gcp(config).CreateLogger();
 ```
 
 #### Or configure with config file:
@@ -26,11 +32,11 @@ This requires the [`serilog-settings-configuration`](https://github.com/serilog/
 
 ```json
 "Serilog": {
-  "Using": [ "Serilog.Sinks.GoogleCloudLogging" ],
+  "Using": [ "Serilog.Sinks.Gcp" ],
   "MinimumLevel": "Information",
   "WriteTo": [
     {
-      "Name": "GoogleCloudLogging",
+      "Name": "Gcp",
       "Args": {
         "projectID": "PROJECT-ID-12345",
         "restrictedToMinimumLevel": "Information",

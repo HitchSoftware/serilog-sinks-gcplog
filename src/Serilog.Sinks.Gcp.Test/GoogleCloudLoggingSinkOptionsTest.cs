@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using FluentAssertions;
 using Xunit;
 
-namespace Serilog.Sinks.GoogleCloudLogging.Test;
+namespace Serilog.Sinks.Gcp.Test;
 
-public class GoogleCloudLoggingSinkOptionsTest
+public class GcpSinkOptionsTest
 {
     [Fact]
     public void WillInitializeWithDefaultArgumentsCorrectly()
     {
-        new GoogleCloudLoggingSinkOptions()
+        new GcpSinkOptions()
             .Should()
-            .BeEquivalentTo(new GoogleCloudLoggingSinkOptions
+            .BeEquivalentTo(new GcpSinkOptions
             {
                 GoogleCredentialJson = null,
                 Labels = { },
@@ -30,7 +30,7 @@ public class GoogleCloudLoggingSinkOptionsTest
     [Fact]
     public void WillCorrectlyAssignAllConstructorArguments()
     {
-        var options = new GoogleCloudLoggingSinkOptions(projectId: "projectId",
+        var options = new GcpSinkOptions(projectId: "projectId",
             resourceType: "k8s_pod",
             logName: "logName",
             labels: new Dictionary<string, string> { { "labelKey", "label value" } },
@@ -43,7 +43,7 @@ public class GoogleCloudLoggingSinkOptionsTest
 
         options
             .Should()
-            .BeEquivalentTo(new GoogleCloudLoggingSinkOptions
+            .BeEquivalentTo(new GcpSinkOptions
             {
                 GoogleCredentialJson = "{}",
                 Labels = { { "labelKey", "label value" } },
@@ -61,11 +61,11 @@ public class GoogleCloudLoggingSinkOptionsTest
     [Fact]
     public void CheckNullLogName()
     {
-        var options = new GoogleCloudLoggingSinkOptions("projectId")
+        var options = new GcpSinkOptions("projectId")
         {
             LogName = null!
         };
 
-        Assert.Throws<ArgumentNullException>(() => new GoogleCloudLoggingSink(options, null));
+        Assert.Throws<ArgumentNullException>(() => new GcpSink(options, null));
     }
 }
