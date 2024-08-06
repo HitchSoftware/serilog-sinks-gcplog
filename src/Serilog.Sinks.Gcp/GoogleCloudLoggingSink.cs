@@ -12,11 +12,11 @@ using Serilog.Events;
 using Serilog.Formatting;
 using Serilog.Sinks.PeriodicBatching;
 
-namespace Serilog.Sinks.GoogleCloudLogging;
+namespace Serilog.Sinks.Gcp;
 
-public class GoogleCloudLoggingSink : IBatchedLogEventSink
+public class GcpSink : IBatchedLogEventSink
 {
-    private readonly GoogleCloudLoggingSinkOptions _sinkOptions;
+    private readonly GcpSinkOptions _sinkOptions;
     private readonly LoggingServiceV2Client _client;
     private readonly MonitoredResource _resource;
     private readonly string _projectId;
@@ -25,7 +25,7 @@ public class GoogleCloudLoggingSink : IBatchedLogEventSink
     private readonly Struct? _serviceContext;
 
 
-    public GoogleCloudLoggingSink(GoogleCloudLoggingSinkOptions sinkOptions, ITextFormatter? textFormatter)
+    public GcpSink(GcpSinkOptions sinkOptions, ITextFormatter? textFormatter)
     {
         _sinkOptions = sinkOptions;
 

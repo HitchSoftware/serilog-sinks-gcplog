@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <PackageVersion>5.0.0</PackageVersion>
+    <PackageVersion>8.0.0</PackageVersion>
     <Description>Serilog sink that writes events to Google Cloud Platform (Stackdriver) Logging.</Description>
-    <Authors>Mani Gandham</Authors>
+    <Authors>Hitch Software</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>serilog-sink-nuget.png</PackageIcon>
-    <PackageIconUrl>https://raw.githubusercontent.com/manigandham/serilog-sinks-googlecloudlogging/master/src/Serilog.Sinks.GoogleCloudLogging/serilog-sink-nuget.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/HitchSoftware/serilog-sinks-gcplog/main/src/Serilog.Sinks.Gcp/serilog-sink-nuget.png</PackageIconUrl>
     <PackageTags>serilog; sink; google cloud; stackdriver; logging;</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>https://github.com/manigandham/serilog-sinks-googlecloudlogging/blob/master/CHANGELOG.md</PackageReleaseNotes>
-    <PackageProjectUrl>https://manigandham.com/post/serilog-sinks-googlecloudlogging</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/manigandham/serilog-sinks-googlecloudlogging</RepositoryUrl>
+    <PackageReleaseNotes>https://github.com/HitchSoftware/serilog-sinks-gcplog/blob/main/CHANGELOG.md</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/HitchSoftware/serilog-sinks-gcplog</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/HitchSoftware/serilog-sinks-gcplog</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <TargetFrameworks>net6.0;net5.0;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net7.0;net8.0;netstandard2.1</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -29,14 +29,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Cloud.Logging.V2" Version="4.0.0" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+    <PackageReference Include="Google.Cloud.Logging.V2" Version="4.4.0" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Serilog" Version="2.11.0" />
-    <PackageReference Include="Serilog.Sinks.PeriodicBatching" Version="2.3.1" />
-    <PackageReference Include="System.Text.Encodings.Web" Version="6.0.0" />
+    <PackageReference Include="Serilog" Version="4.0.1" />
+    <PackageReference Include="Serilog.Sinks.PeriodicBatching" Version="5.0.0" />
+    <PackageReference Include="System.Text.Encodings.Web" Version="8.0.0" />
   </ItemGroup>
 
 </Project>

@@ -7,9 +7,9 @@ using Serilog.Formatting;
 using Serilog.Formatting.Display;
 using Serilog.Sinks.PeriodicBatching;
 
-namespace Serilog.Sinks.GoogleCloudLogging;
+namespace Serilog.Sinks.Gcp;
 
-public static class GoogleCloudLoggingSinkExtensions
+public static class GcpSinkExtensions
 {
     /// <summary>
     /// Writes log events to Google Cloud Logging.
@@ -24,9 +24,9 @@ public static class GoogleCloudLoggingSinkExtensions
     /// <param name="restrictedToMinimumLevel">The minimum level for events passed through the sink. Ignored when <paramref name="levelSwitch"/> is specified.</param>
     /// <param name="levelSwitch">A switch allowing the pass-through minimum level to be changed at runtime.</param>
     /// <returns>Configuration object allowing method chaining.</returns>
-    public static LoggerConfiguration GoogleCloudLogging(
+    public static LoggerConfiguration Gcp(
         this LoggerSinkConfiguration loggerConfiguration,
-        GoogleCloudLoggingSinkOptions sinkOptions,
+        GcpSinkOptions sinkOptions,
         int? batchSizeLimit = null,
         TimeSpan? period = null,
         int? queueLimit = null,
@@ -46,7 +46,7 @@ public static class GoogleCloudLoggingSinkExtensions
             QueueLimit = queueLimit
         };
 
-        var sink = new GoogleCloudLoggingSink(sinkOptions, textFormatter);
+        var sink = new GcpSink(sinkOptions, textFormatter);
         var batchingSink = new PeriodicBatchingSink(sink, batchingOptions);
 
         return loggerConfiguration.Sink(batchingSink, restrictedToMinimumLevel, levelSwitch);
@@ -54,10 +54,10 @@ public static class GoogleCloudLoggingSinkExtensions
 
     /// <summary>
     /// Overload that accepts all configuration settings as parameters to allow configuration in files using serilog-settings-configuration package.
-    /// This method creates a GoogleCloudLoggingSinkOptions object and calls the standard constructor above.
+    /// This method creates a GcpSinkOptions object and calls the standard constructor above.
     /// </summary>
     /// <returns>Configuration object allowing method chaining.</returns>
-    public static LoggerConfiguration GoogleCloudLogging(
+    public static LoggerConfiguration Gcp(
         this LoggerSinkConfiguration loggerConfiguration,
         string? projectId = null,
         string? resourceType = null,
@@ -77,7 +77,7 @@ public static class GoogleCloudLoggingSinkExtensions
         LogEventLevel restrictedToMinimumLevel = LevelAlias.Minimum,
         LoggingLevelSwitch? levelSwitch = null)
     {
-        var options = new GoogleCloudLoggingSinkOptions(
+        var options = new GcpSinkOptions(
             projectId,
             resourceType,
             logName,
@@ -90,7 +90,7 @@ public static class GoogleCloudLoggingSinkExtensions
             serviceVersion
         );
 
-        return loggerConfiguration.GoogleCloudLogging(
+        return loggerConfiguration.Gcp(
             options,
             batchSizeLimit,
             period,

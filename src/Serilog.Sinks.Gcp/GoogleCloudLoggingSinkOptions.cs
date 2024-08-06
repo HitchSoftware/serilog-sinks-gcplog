@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace Serilog.Sinks.GoogleCloudLogging;
+namespace Serilog.Sinks.Gcp;
 
-public class GoogleCloudLoggingSinkOptions
+public class GcpSinkOptions
 {
     /// <summary>
     /// ID (not name) of Google Cloud Platform project where logs will be sent.
@@ -105,7 +105,7 @@ public class GoogleCloudLoggingSinkOptions
     /// Attach service version to log entries (added as `serviceContext.version` metadata in `jsonPayload`).
     /// Required for logged exceptions to be forwarded to StackDriver Error Reporting.
     /// </param>
-    public GoogleCloudLoggingSinkOptions(
+    public GcpSinkOptions(
         string? projectId = null,
         string? resourceType = null,
         string? logName = null,

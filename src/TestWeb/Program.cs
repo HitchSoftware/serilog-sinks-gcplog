@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Serilog.Events;
-using Serilog.Sinks.GoogleCloudLogging;
+using Serilog.Sinks.Gcp;
 
 // enable serilog to log out internal messages to console for debugging
 Serilog.Debugging.SelfLog.Enable(Console.WriteLine);
@@ -32,7 +32,7 @@ try
 
     // serilog config programmatically
     {
-        var options = new GoogleCloudLoggingSinkOptions
+        var options = new GcpSinkOptions
         {
             ProjectId = "PROJECT-ID-12345",
             ResourceType = "gce_instance",
@@ -40,7 +40,7 @@ try
             UseSourceContextAsLogName = true,
         };
 
-        builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console().WriteTo.GoogleCloudLogging(options).MinimumLevel.Is(LogEventLevel.Verbose));
+        builder.Host.UseSerilog((ctx, lc) => lc.WriteTo.Console().WriteTo.Gcp(options).MinimumLevel.Is(LogEventLevel.Verbose));
     }
 
 
